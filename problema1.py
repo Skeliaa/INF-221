@@ -3,22 +3,26 @@ def obtenerInput():
     #input = [[1, 2, 3], [4, 5, 6], [1,5,4]]
     listaGod = []
     n = int(input())
-    print(n)
-    while n != '0':
+    while n != 'EOF':
         lista = []
         n = int(n)
         for _ in range(0,n):
             cajita = input().strip().split(' ')
             lista.append([int(cajita[0]),int(cajita[1]),int(cajita[2])])
-            print(cajita)
         listaGod.append(lista)
         try: n = input()
-        except:
-            n  = '0'
-        print(n)
+        except: n  = 'EOF'
 
     return listaGod
 
+def obtenerInput2():
+    lista = []
+    n = int(input())
+    for _ in range(0,n):
+            cajita = input().strip().split(' ')
+            lista.append([int(cajita[0]),int(cajita[1]),int(cajita[2])])
+    return lista
+    
 def generarRotaciones(lista): # añadir las instancias posibles de las cajas
     listaExt = []
     i = 0
@@ -60,7 +64,18 @@ def main():
         f1 = []
         for i in range(0,len(R)):
             f1.append(f(i,R))
-        print("la altura maxima que se puede obtener con estas cajas es de:",max(f1))
+        print(max(f1))
+
+def main2():
+    L = obtenerInput2()
+    R = generarRotaciones(L)
+    ordenarLados(R)
+    R.sort(key=areaCaja,reverse=1)
+    f1 = []
+    for i in range(0,len(R)):
+        f1.append(f(i,R))
+    print("la altura maxima que se puede obtener con estas cajas es de:",max(f1))
+
 
 inicio = time.time()
 main()

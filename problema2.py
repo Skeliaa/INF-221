@@ -3,21 +3,24 @@ def obtenerInput():
     #input = [[1, 2, 3], [4, 5, 6], [1,5,4]]
     listaGod = []
     n = int(input())
-    print(n)
-    while n != '0':
+    while n != 'EOF':
         lista = []
         n = int(n)
         for _ in range(0,n):
             cajita = input().strip().split(' ')
             lista.append([int(cajita[0]),int(cajita[1]),int(cajita[2])])
-            print(cajita)
         listaGod.append(lista)
         try: n = input()
-        except:
-            n  = '0'
-        print(n)
-
+        except: n  = 'EOF'
     return listaGod
+
+def obtenerInput2():
+    lista = []
+    n = int(input())
+    for _ in range(0,n):
+            cajita = input().strip().split(' ')
+            lista.append([int(cajita[0]),int(cajita[1]),int(cajita[2])])
+    return lista
 
 def generarRotaciones(lista): # añadir las instancias posibles de las cajas
     listaExt = []
@@ -65,7 +68,22 @@ def main():
                 if(R[j][1]>a and R[j][2]>b): #if caja j mas grande que caja i
                     posibles.append(h+F[j])
             F.append(max(posibles))
-        print("la altura maxima que se puede obtener con estas cajas es de:",max(F))
+        print(max(F))
+
+def main2():
+    L = obtenerInput()
+    R = generarRotaciones(L)
+    ordenarLados(R)
+    R.sort(key=areaCaja,reverse=1)
+    F = []
+    for i in range(0,len(R)):
+        h,a,b = R[i]
+        posibles = [h]
+        for j in range(0,i):
+            if(R[j][1]>a and R[j][2]>b): #if caja j mas grande que caja i
+                posibles.append(h+F[j])
+        F.append(max(posibles))
+    print("la altura maxima que se puede obtener con estas cajas es de:",max(f1))
 
 inicio = time.time()
 main()
