@@ -1,0 +1,11 @@
+Christian André Barrios Lopez 202104660-7
+Vicente Ignacio Luongo Codecido 202073637-5
+Cristóbal Adolfo Tirado Morales 202104586-4
+
+Vicente Luongo se encargó de realizar las funciones generarRotaciones(), ordenarLados() y areacaja() en el problema1.
+
+Cristóbal Tirado se encargó de realizar la ecuación de recurrencia f(i, R) y obtenerDatos().
+
+Christian Barrios se encargó de adaptar el problema de fuerza bruta a programación dinámica y el main().
+
+😦
