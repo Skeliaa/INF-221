@@ -42,17 +42,6 @@ def ordenarLados(lista): #dejar las cajas como: altrura, lado grande, lado chico
 def areaCaja(caja): #area basal de la caja para poder ordenarlas
     return caja[1]*caja[2]
 
-def f(i):
-    cajaf = R[i]
-    h,a,b = cajaf
-    posibles = [0]
-
-    for j in range(0,i):
-        _,a2,b2 = R[j]
-        if(a2>a and b2>b): #if caja j mas grande que caja i
-            posibles.append(f(j))
-
-    return h+max(posibles)
 
 def main():
     superL = obtenerInput()
