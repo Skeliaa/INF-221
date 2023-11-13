@@ -1,0 +1,2 @@
+def rar():
+    print(input())

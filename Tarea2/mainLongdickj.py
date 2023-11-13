@@ -1,3 +1,5 @@
+from time import time
+from mainyo import obtenerInput 
 def encontrar_superposicion_maxima(intervalos):
     n = len(intervalos)
     max_superposicion = 0
@@ -5,7 +7,7 @@ def encontrar_superposicion_maxima(intervalos):
     for i in range(n - 1):
         for j in range(i + 1, n):
             # Verificar si hay superposición antes de calcular la intersección
-            if intervalos[i][1] >= intervalos[j][0] and intervalos[j][1] >= intervalos[i][0]:
+            if intervalos[i][1] >= intervalos[j][0]:#"""  and intervalos[j][1] >= intervalos[i][0] """
                 interseccion = min(intervalos[i][1], intervalos[j][1]) - max(intervalos[i][0], intervalos[j][0]) + 1
                 max_superposicion = max(max_superposicion, interseccion)
 
@@ -34,13 +36,22 @@ def main():
                         #print("aber weooooon2: ",int(k))
                 except ValueError:
                     #print("AAAAAAAAAAAA")
-                    print("final: ",intervalos)
+                    #print("final: ",intervalos)
                     resultado = encontrar_superposicion_maxima( intervalos)
                     print("superposicion_maxima: ",resultado)
                     
 
     except EOFError:
         pass
+def main2():
+    lista = obtenerInput()
+    for l in lista:
+        resultado = encontrar_superposicion_maxima(l)
+        print("superposicion_maxima: ",resultado)
 
-if _name_ == "_main_":
-    main()
+
+if __name__ == "__main__":
+    start = time()
+    main2()
+    end = time()
+    print((end-start)*1000)
